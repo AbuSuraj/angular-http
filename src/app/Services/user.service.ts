@@ -8,13 +8,14 @@ import { User } from '../interface/user';
 })
 export class UserService {
 
+  private BASE_URL =' https://jsonplaceholder.typicode.com'  
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]>{
-    return this.http.get<User[]>(`https://jsonplaceholder.typicode.com/users`)
+    return this.http.get<User[]>(`${this.BASE_URL}/users`)
   }
 
   getUser(id:number): Observable<User[]>{
-    return this.http.get<User[]>(`https://jsonplaceholder.typicode.com/users/${id}`)
+    return this.http.get<User[]>(`${this.BASE_URL}/users/${id}`)
   }
 }
