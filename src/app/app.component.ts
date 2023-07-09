@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   title = 'angular-http';
   private user: User = {
     'id': 1,
-    'name': 'AWS Graham',
+    'name': 'bws Graham',
     'username': 'Bret',
     'email': 'Sincere@april.biz',
     'address': {
@@ -40,7 +40,8 @@ export class AppComponent implements OnInit {
      this.onGetUsers();
      this.onGetUser();
      this.onCreateUser();
-     this.onUpdateUser();
+    //  this.onUpdateUser();
+     this.onPatchUser();
   }
 
   onGetUsers(): void {
@@ -65,9 +66,21 @@ export class AppComponent implements OnInit {
     })
   }
   onUpdateUser(): void {
-    this.userService.createUser(this.user).subscribe(response =>{
+    this.userService.updateUser(this.user).subscribe(response =>{
       console.log(response);
       console.log('updated')
+    })
+  }
+  onPatchUser(): void {
+    this.userService.patchUser(this.user).subscribe(response =>{
+      console.log(response);
+      console.log('patch')
+    })
+  }
+  onDeleteUser(): void {
+    this.userService.deleteUser(1).subscribe(response =>{
+      console.log(response);
+      console.log('delete')
     })
   }
 
