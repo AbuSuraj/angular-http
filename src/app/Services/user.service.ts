@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../interface/user';
@@ -12,11 +12,13 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]>{
-    return this.http.get<User[]>(`${this.BASE_URL}/users`)
+   let  myHeaders = new HttpHeaders({'my-header': ['Amar head']})
+    return this.http.get<User[]>(`${this.BASE_URL}/users`,{headers: myHeaders})
   }
 
   getUser(id:number): Observable<User[]>{
     return this.http.get<User[]>(`${this.BASE_URL}/users/${id}`)
+
   }
 
   createUser(user:User): Observable<User>{
