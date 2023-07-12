@@ -25,8 +25,10 @@ export class TableComponent implements OnInit {
     this.userService.getUsers().subscribe( response =>{
       console.table(response);
       this.users = response;
+      (error:any)=>console.log(error)
     }
     )
+    
   }
 
 }
