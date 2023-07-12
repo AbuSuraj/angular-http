@@ -10,4 +10,6 @@ export interface User {
     phone: string;
     website: string;
     company: Company;
+    serchKey: string [];
+    isAdmin: string;
 }

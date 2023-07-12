@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { User } from '../interface/user';
 
 @Injectable({
@@ -13,6 +13,9 @@ export class UserService {
 
   getUsers(): Observable<User[]>{ 
     return this.http.get<User[]>(`${this.BASE_URL}/users`)
+    .pipe(
+      map(users =>users.map(user =>({...user, username: user.username.toUpperCase(), isAdmin: user.id===10 ? 'admin': 'user', searchKey:[user.name,user.username]})))
+    )
   }
   // getUsers(): Observable<User[]>{
   //   let myParams = new HttpParams().set('page','5').set('sort','true');

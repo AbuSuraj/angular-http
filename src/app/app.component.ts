@@ -29,6 +29,8 @@ export class AppComponent implements OnInit {
     },
     'phone': '1-770-736-8031 x56442',
     'website': 'hildegard.org',
+    'serchKey':  ['bws Graham', 'Bret'],
+    'isAdmin': 'admin',
     'company': {
     'name': 'Romaguera-Crona',
     'catchPhrase': 'Multi-layered client-server neural-net',
