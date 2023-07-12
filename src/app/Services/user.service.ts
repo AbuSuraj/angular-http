@@ -12,7 +12,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   getUsers(): Observable<User[]>{ 
-    return this.http.get<User[]>(`${this.BASE_URL}/users2`)
+    return this.http.get<User[]>(`${this.BASE_URL}/users`)
     .pipe(
       map(users =>users.map(user =>({...user, username: user.username.toUpperCase(), isAdmin: user.id===10 ? 'admin': 'user', searchKey:[user.name,user.username]}))),
       
@@ -29,7 +29,7 @@ export class UserService {
   //   return this.http.get<User[]>(`${this.BASE_URL}/users`,{params: myParams})
   // }
  private handleError(error: HttpErrorResponse):Observable<never>{
-    if(error.status === 404) return throwError("Error 404 occured");
+    if(error.status === 404) return throwError({code:404, message:"Error 404 occured"});
     return throwError('an error occurred')
   }
   
