@@ -11,11 +11,14 @@ export class UserService {
   private BASE_URL =' https://jsonplaceholder.typicode.com'  
   constructor(private http: HttpClient) { }
 
-  getUsers(): Observable<User[]>{
-    let myParams = new HttpParams().set('page','5').set('sort','true');
-    myParams = myParams.append('name', 'Suraj')
-    return this.http.get<User[]>(`${this.BASE_URL}/users`,{params: myParams})
+  getUsers(): Observable<User[]>{ 
+    return this.http.get<User[]>(`${this.BASE_URL}/users`)
   }
+  // getUsers(): Observable<User[]>{
+  //   let myParams = new HttpParams().set('page','5').set('sort','true');
+  //   myParams = myParams.append('name', 'Suraj')
+  //   return this.http.get<User[]>(`${this.BASE_URL}/users`,{params: myParams})
+  // }
 
   getUser(id:number): Observable<User[]>{
     let  myHeaders = new HttpHeaders({'my-header': ['Amar head']})

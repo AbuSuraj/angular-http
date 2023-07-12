@@ -11,6 +11,7 @@ import { User } from './interface/user';
 })
 export class AppComponent implements OnInit {
   title = 'angular-http';
+ 
   private user: User = {
     'id': 1,
     'name': 'bws Graham',
