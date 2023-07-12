@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { Observable, catchError, map, of } from 'rxjs';
 import { User } from '../interface/user';
 
 @Injectable({
@@ -14,7 +14,11 @@ export class UserService {
   getUsers(): Observable<User[]>{ 
     return this.http.get<User[]>(`${this.BASE_URL}/users`)
     .pipe(
-      map(users =>users.map(user =>({...user, username: user.username.toUpperCase(), isAdmin: user.id===10 ? 'admin': 'user', searchKey:[user.name,user.username]})))
+      map(users =>users.map(user =>({...user, username: user.username.toUpperCase(), isAdmin: user.id===10 ? 'admin': 'user', searchKey:[user.name,user.username]}))),
+
+      catchError((error:any)=>{
+        return of([]);
+      })
     )
   }
   // getUsers(): Observable<User[]>{
