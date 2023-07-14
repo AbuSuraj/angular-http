@@ -64,7 +64,7 @@ export class AppComponent implements OnInit {
 
   onCreateUser(): void {
     this.userService.createUser(this.user).subscribe(response =>{
-      console.log(response);
+     
       console.log('created')
     })
   }
