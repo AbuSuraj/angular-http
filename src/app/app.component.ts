@@ -70,8 +70,8 @@ export class AppComponent implements OnInit {
   }
   onUpdateUser(): void {
     this.userService.updateUser(this.user).subscribe(response =>{
-      console.log(response);
-      console.log('updated')
+      
+      
     })
   }
   onPatchUser(): void {
