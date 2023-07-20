@@ -77,7 +77,7 @@ export class AppComponent implements OnInit {
   onPatchUser(): void {
     this.userService.patchUser(this.user).subscribe(response =>{
       console.log(response);
-      console.log('patch')
+      
     })
   }
   onDeleteUser(): void {
