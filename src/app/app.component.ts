@@ -83,7 +83,7 @@ export class AppComponent implements OnInit {
   onDeleteUser(): void {
     this.userService.deleteUser(1).subscribe(response =>{
       console.log(response);
-      console.log('delete')
+     
     })
   }
 
